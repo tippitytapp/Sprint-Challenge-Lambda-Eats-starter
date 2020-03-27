@@ -6,8 +6,8 @@ import axios from "axios";
 const formSchema= yup.object().shape({
     name: yup.string().required("Name is Required").min(2, "Minimum Length 2 Characters"),
     size: yup.string(),
-    sauce: yup.boolean().oneOf([true], "Please Select A Sauce"),
-    pizzaToppings: yup.boolean().oneOf([true], "Please Select a Topping"),
+    sauce: yup.string(),
+    pizzaToppings: yup.string(),
     special: yup.string()
 })
 
@@ -88,9 +88,12 @@ function Form(){
     return (
         <>
             <Link to="/pizza"></Link>
-<form onSubmit="formSubmit">
+<form onSubmit={formSubmit}>
 
-    <label>Name: <input type="text" name="name" id="name" placeholder="Name" value={formState.name} onChange={inputChange}/></label>
+    <label>Name: <input type="text" name="name" id="name" placeholder="Name" value={formState.name} onChange={inputChange}/>
+    {errors.name.length > 0 ? (
+          <p className='error'>{errors.name}</p>
+        ) : null}</label>
 <h2>Choice of Size</h2>
 <p>Required</p>
     <label>
@@ -100,37 +103,41 @@ function Form(){
         <option value="lg">Larger</option>
         <option value="xl">Extra Large</option> 
     </select>
+    {errors.size.length > 0 ? (
+          <p className='error'>{errors.size}</p>
+        ) : null}
     </label>
 
 <h2>Choose Your Sauce</h2>
 <p>Required</p>
-    <label><input type="checkbox" id="original" name="sauce[]" value={formState.sauce[0]} onChange={inputChange}/>Original Red</label>
-    <label><input type="checkbox" id="garlicranch" name="sauce[]" value={formState.sauce[1]} onChange={inputChange}/>Garlic Ranch</label>
-    <label><input type="checkbox" id="bbqsauce" name="sauce[]" value={formState.sauce[2]} onChange={inputChange}/>Bar-B-Q Sauce</label>
-
+    <label><input type="checkbox" id="original" name="sauce" value={formState.sauce} onChange={inputChange}/>Original Red</label>
+    <label><input type="checkbox" id="garlicranch" name="sauce" value={formState.sauce} onChange={inputChange}/>Garlic Ranch</label>
+    <label><input type="checkbox" id="bbqsauce" name="sauce" value={formState.sauce} onChange={inputChange}/>Bar-B-Q Sauce</label>
+    {errors.sauce.length > 0 ? (
+          <p className='error'>{errors.sauce}</p>
+        ) : null}
 
             <fieldset>
                 <legend><h2>Choose Your Toppings</h2></legend>
                 <p>Choose Up To 8</p>
                 <p>
-                    <label><input type="checkbox" name="pizzaToppings" value="Pepperoni" />Pepperoni</label>
-                    <label><input type="checkbox" name="pizzaToppings" value="Sausage" />Sausage</label>
-                    <label><input type="checkbox" name="pizzaToppings" value="Canadian Bacon" />Canadian Bacon</label>
-                    <label><input type="checkbox" name="pizzaToppings" value="Spicy Italian Sausage" />Spicy Italian Sausage</label>
-                    <label><input type="checkbox" name="pizzaToppings" value="Grilled Chicken" />Grilled Chicken</label>
-                    <label><input type="checkbox" name="pizzaToppings" value="Jalapenos" />Jalapenos</label>
-                    <label><input type="checkbox" name="pizzaToppings" value="3 Cheese Blend" />3 Cheese Blend</label>
-                    <label><input type="checkbox" name="pizzaToppings" value="Extra Cheese" />Extra Cheese</label>
+                    <label><input type="checkbox" name="pizzaToppings" value="Pepperoni"  onChange={inputChange}/>Pepperoni</label>
+                    <label><input type="checkbox" name="pizzaToppings" value="Sausage"  onChange={inputChange}/>Sausage</label>
+                    <label><input type="checkbox" name="pizzaToppings" value="Canadian Bacon"  onChange={inputChange} />Canadian Bacon</label>
+                    <label><input type="checkbox" name="pizzaToppings" value="Spicy Italian Sausage" onChange={inputChange} />Spicy Italian Sausage</label>
+                    <label><input type="checkbox" name="pizzaToppings" value="Grilled Chicken"  onChange={inputChange}/>Grilled Chicken</label>
+                    <label><input type="checkbox" name="pizzaToppings" value="Jalapenos"  onChange={inputChange}/>Jalapenos</label>
+                    <label><input type="checkbox" name="pizzaToppings" value="3 Cheese Blend" onChange={inputChange} />3 Cheese Blend</label>
+                    <label><input type="checkbox" name="pizzaToppings" value="Extra Cheese"  onChange={inputChange}/>Extra Cheese</label>
 
                 </p>
             </fieldset>
 
 
-<h2>Special Instructions</h2>
 
-            <label><input type="text" id="special" name="special" placeHolder="Anything Else You'd Like To Add?"/></label>
+            <label><h2>Special Instructions</h2><input type="text" id="special" name="special" placeholder="Anything Else You'd Like To Add?" value={formState.special} onChange={inputChange}/></label>
             <pre>{JSON.stringify(post, null, 2)}</pre>
-      <button disabled={buttonDisabled}>Submit</button>
+      <button className="Submit" disabled={buttonDisabled}>Submit</button>
 </form>
 
 
