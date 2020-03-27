@@ -6,8 +6,10 @@ function Home(){
 
     return(
         <>
+        <header>
         <img src="./Assets/Pizza.jpg" alt="fresh cheesy pizza uncut"></img>
         <h1>Welcome to Lambda Eats</h1>
+        </header>
         </>
         );
 }
