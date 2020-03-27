@@ -13,8 +13,16 @@ Demonstrate your understanding of this week's concepts by answering the followin
 Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+
+--useRouteMatch is so that you can set what the route is, assign it to a variable and then instead of having to change the path or url for every single link everytime it may need to be changed, you can just change what the variable is and they others will all change dynamically
+
 2. How would you explain form validation to someone who has never programmed before?
+
+--form validation is a way to ensure that the form inputs (of all kinds) it ensures that the state is exactly as it should be for what y ou are asking. making sure that all required fields have been input, making sure that there is a password of a certain length, are just a few examples.
+
 3. In 1-2 sentences, define end to end testing. 
+
+--end to end testing is the testing of how a user might actually use our site. be it clicking on links, be it putting information in a text field, be it deleteing what they put. its a way to make sure those things work exactly as designed. 
 
 You are expected to be able to answer all these questions. Your responses contribute to your Sprint Challenge grade. Skipping this section **will** prevent you from passing this challenge.
 
@@ -24,11 +32,11 @@ You are expected to be able to answer all these questions. Your responses contri
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your project manager as collaborator on Github.
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!).
-- [ ] CD into the project base directory `cd lambda-eats`
-- [ ] Download project dependencies by running `npm install`
+- [x] Create a forked copy of this project.
+- [x] Add your project manager as collaborator on Github.
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!).
+- [x] CD into the project base directory `cd lambda-eats`
+- [x] Download project dependencies by running `npm install`
 - [ ] Start up the app using `npm start`
 - [ ] Create a new branch: git checkout -b `<firstName-lastName>`. Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
 - [ ] Push commits: git push origin `<firstName-lastName>`.
